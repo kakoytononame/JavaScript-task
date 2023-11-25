@@ -1,21 +1,18 @@
 import {CreateTaskComponent} from './task-component.js'
+import {TasksService} from '../services/GetTaskService.js'
 
-const task = new CreateTaskComponent();
 
+
+
+const taskService = new TasksService();
+const boardTasks = [...taskService.getBoardTasks()];
 
 function createTaskTypeSectionComponentTemplate() {
     
-    var tasks = [
-        ['Пинать аналитика', 'Бегать от аналитика', 'Бегать за аналитиком', 'Прятаться от пма'],
-        ['Прятаться от пма'],
-        ['Положить сервер', 'Удалить прод', 'Уехать из страны'],
-        ['Работать', 'Прочитать книгу "Чистый код"', 'Сходить на пары'],
-    ];
-    
-    return AddTaskComponents(tasks);
+    return AddTaskComponents();
 }
 
-const AddTaskComponents = (tasks) => {
+const AddTaskComponents = () => {
 
     var resultComponent = '';
 
@@ -26,10 +23,23 @@ const AddTaskComponents = (tasks) => {
 
     var components = [BackLogComponent, InWorkComponent, TestingComponent, BucketComponent]
 
-    tasks.forEach(function callback(task, index){    
-        task.forEach(element => {
-            components[index] += `${AddTask(element)}`;
-        })
+    boardTasks.forEach(function callback(task){
+
+      switch(task.status){
+        case "backlog": 
+          components[0] += `${AddTask(task.id, task.title, task.status)}`
+          break;
+        case "processing": 
+          components[1] += `${AddTask(task.id, task.title, task.status)}`
+          break;
+        case "done": 
+          components[2] += `${AddTask(task.id, task.title, task.status)}`
+          break;
+        case "basket": 
+          components[3] += `${AddTask(task.id, task.title, task.status)}`
+          break;
+          
+      }  
     })
 
     components.forEach(component => {
@@ -43,8 +53,9 @@ const AddTaskComponents = (tasks) => {
     return resultComponent;
 }
 
-const AddTask = (text, taskType) => {
-    return(`${task.getTemplate(text, taskType)}`)
+function AddTask (id, text, type) {
+    var component = new CreateTaskComponent({id, title: text, status : type});
+    return(`${component.getTemplate()}`)
 }
 
 export class CreateTaskTypeSectionComponent {
