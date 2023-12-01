@@ -1,4 +1,5 @@
 import {CreateTaskTypeSectionComponent} from './tasktypesection-component.js';
+import {BaseComponent} from './base/BaseComponent.js';
 
 const CreateTaskTypeSection = new CreateTaskTypeSectionComponent();
 
@@ -10,30 +11,8 @@ function createTaskBoardComponentTemplate() {
     );
 }
 
-export class CreateTaskBoardComponent {
+export class CreateTaskBoardComponent extends BaseComponent{
   getTemplate() {
     return createTaskBoardComponentTemplate();
   }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
-  }
-}
-
-function createElement(template) {
-    const newElement = document.createElement('div');
-    newElement.innerHTML = template;
-  
-  
-    return newElement.firstElementChild;
 }

@@ -1,3 +1,5 @@
+import {BaseComponent} from './base/BaseComponent.js';
+
 function createAreaComponentTemplate() {
     return (
     `<div class="CreateBlock">
@@ -14,31 +16,8 @@ function createAreaComponentTemplate() {
 }
 
 
-export class CreateAreaComponent {
+export class CreateAreaComponent extends BaseComponent{
   getTemplate() {
     return createAreaComponentTemplate();
   }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
-  }
 }
-
-function createElement(template) {
-    const newElement = document.createElement('div');
-    newElement.innerHTML = template;
-  
-  
-    return newElement.firstElementChild;
-  }

@@ -1,6 +1,6 @@
-import {CreateTaskComponent} from './task-component.js'
-import {TasksService} from '../services/GetTaskService.js'
-
+import {CreateTaskComponent} from './task-component.js';
+import {TasksService} from '../services/GetTaskService.js';
+import {BaseComponent} from './base/BaseComponent.js';
 
 
 
@@ -58,23 +58,8 @@ function AddTask (id, text, type) {
     return(`${component.getTemplate()}`)
 }
 
-export class CreateTaskTypeSectionComponent {
+export class CreateTaskTypeSectionComponent extends BaseComponent{
   getTemplate() {
     return createTaskTypeSectionComponentTemplate();
-  }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
   }
 }

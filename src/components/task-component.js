@@ -1,3 +1,5 @@
+import {BaseComponent} from './base/BaseComponent.js';
+
 function createTaskComponentTemplate(id, text, taskType) {
     return (
       changeTaskText(text, taskType)
@@ -14,7 +16,7 @@ const changeTaskText = (text, taskType) => {
 }
 
 
-export class CreateTaskComponent {
+export class CreateTaskComponent extends BaseComponent{
 
   #id = null;
   #status = null;
@@ -22,28 +24,13 @@ export class CreateTaskComponent {
 
 
   constructor({id, title,status}){
+    super();
     this.#id = id;
     this.#status = status;
     this.#title = title;
   }
 
-
   getTemplate() {
     return createTaskComponentTemplate(this.#id, this.#title, this.#status);
-  }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
   }
 }

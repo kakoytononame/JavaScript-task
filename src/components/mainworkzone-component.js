@@ -1,5 +1,6 @@
 import {CreateAreaComponent} from './createarea-component.js';
 import {CreateTaskBoardComponent} from './taskboard-component.js';
+import {BaseComponent} from './base/BaseComponent.js';
 
 const CreateArea = new CreateAreaComponent();
 const CreateTaskBoard = new CreateTaskBoardComponent();
@@ -12,33 +13,9 @@ function createMainWorkzoneComponent() {
       );
 }
 
-function createElement(template) {
-    const newElement = document.createElement('div');
-    newElement.innerHTML = template;
-  
-  
-    return newElement;
-  }
-
-
-export class CreateMainWorkzoneComponent {
+export class CreateMainWorkzoneComponent extends BaseComponent {
   getTemplate() {
     return createMainWorkzoneComponent();
-  }
-
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-
-    return this.element;
-  }
-
-
-  removeElement() {
-    this.element = null;
   }
 }
 

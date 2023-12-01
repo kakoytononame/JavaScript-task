@@ -17,8 +17,8 @@ function createElement(template) {
   
 function render(component, container, place = RenderPosition.BEFOREEND) {
 
-  component.forEach(element => {
-    container.insertAdjacentElement(place, element.getElement());
+  component.forEach(elem => {
+    container.insertAdjacentElement(place, elem.getElements());
   }); 
 }
   
