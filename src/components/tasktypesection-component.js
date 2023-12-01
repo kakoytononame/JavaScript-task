@@ -1,7 +1,7 @@
 import {CreateTaskComponent} from './task-component.js';
 import {TasksService} from '../services/GetTaskService.js';
 import {BaseComponent} from './base/BaseComponent.js';
-
+import {DeleteTaskButtonComponent} from './deletetaskbutton-component.js';
 
 
 const taskService = new TasksService();
@@ -41,6 +41,8 @@ const AddTaskComponents = () => {
           
       }  
     })
+
+    components[3] += `${new DeleteTaskButtonComponent().getTemplate()}`
 
     components.forEach(component => {
         const newElement = document.createElement('div');
