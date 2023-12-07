@@ -6,20 +6,15 @@ export const tasks = [{
 {
     'id' : `2`,
     'title' : `Прятаться от пма`,
-    'status' : `processing`,
-},
-{
-    'id' : `3`,
-    'title' : `Положить сервер`,
-    'status' : `done`,
+    'status' : `inwork`,
 },
 {
     'id' : `4`,
     'title' : `Работать`,
-    'status' : `basket`,
+    'status' : `backet`,
 },
 {
     'id' : `5`,
     'title' : `Удалить прод`,
-    'status' : `processing`,
+    'status' : `inwork`,
 }]

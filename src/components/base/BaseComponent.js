@@ -18,7 +18,7 @@ export class BaseComponent {
 
   getElement() {
     if (!this.element) {
-      this.element = createElement(this.getTemplate());
+      this.element = this.createElement(this.getTemplate());
     }
 
     return this.element;
@@ -26,7 +26,7 @@ export class BaseComponent {
 
   getElements(){
     if (!this.element) {
-        this.element = createElement(this.getTemplate());
+        this.element = this.createElement(this.getTemplate());
     }
   
       return this.element.parentElement;
@@ -38,7 +38,7 @@ export class BaseComponent {
   }
 
   createElement(template) {
-    const newElement = document.createElement('div');
+    var newElement = document.createElement('div');
     newElement.innerHTML = template;
   
   

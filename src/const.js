@@ -1,19 +1,16 @@
-const Constanats = () => {
-    const Status = {
+
+  export const Status = {
         BACKLOG: `backlog`,
-        PROCESSING: `processing`,
-        DONE: `done`,
-        BASKET: `basket`,
+        INWORK: `inwork`,
+        DONE: `testing`,
+        BACKET: `backet`,
       };
       
     
     
-    const StatusLabel = {
+  export const StatusLabel = {
         [Status.BACKLOG]: `Бэклог`,
-        [Status.PROCESSING]: `В процессе`,
-        [Status.DONE]: `Готово`,
-        [Status.BASKET]: `Корзина`,
+        [Status.INWORK]: `В процессе`,
+        [Status.Testing]: `На тестировании`,
+        [Status.BACKET]: `Корзина`,
       };
-}
-
-export {Constanats};
